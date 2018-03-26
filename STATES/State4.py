@@ -12,7 +12,8 @@ class State4(state.State):
     Lecture des noms de rubriques.
     Renseignement de colonnes de la requete. partie SELECT
     """
-    def __init__(self):
+    def __init__(self,prevState=None):
+        self.prevState=prevState
         self._whoami=" ETAT 4 : "
     def step(self,parsing,requete):
         my_file = open("./DATA/NomsRubrique.dat","r")              #le fichier contenant les noms de rubrique
@@ -40,5 +41,5 @@ class State4(state.State):
                 
                 my_file.close()                                     #fermer le fichier
                 del parsing[0]                                      #supprimer mot traité
-                return State5.State5()
+                return State5.State5(self)
         pass

@@ -12,13 +12,14 @@ class StateC(state.State):
         -'et' alors retour à l'état 5
         -sinon aller à l'état 6
     """
-    def __init__(self):
+    def __init__(self,prevState=None):
+        self.prevState=prevState
         self._whoami=" ETAT C : "
     def step(self,parsing,requete):
         if(parsing[0]=="et"):
             del parsing[0]
-            return State5.State5()
+            return State5.State5(self)
         
-        return State6.State6()
+        return State6.State6(self)
         pass
  

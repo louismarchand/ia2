@@ -18,10 +18,15 @@ class State6(state.State):
     ETAT 6 de l'automate
     Assemblage des différents éléments de la requête
     """
-    def __init__(self):
+    def __init__(self,prevState=None):
+        self.prevState=prevState
         self._whoami=" ETAT 6 : Requete formée "
     def step(self,parsing,requete):
-        #RETIRER LES DOUBLONS EVENTUELS
+        """
+            CONSTRUCTION d'une requete sql à partir de l'objet 'requete' 
+            et des ses différentes entrées.
+        """
+        #RETIRER LES DOUBLONS EVENTUELS sur chacun des parametres de la requete
         requete["select"]=removeDoublon(requete["select"])
         requete["where"]=removeDoublon(requete["where"])
         requete["whereegal"]=removeDoublon(requete["whereegal"])

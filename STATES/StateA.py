@@ -11,7 +11,8 @@ class StateA(state.State):
     Lecture du verbe qui suit le mot "qui" dans la question forumlée.
     Renseignement 
     """
-    def __init__(self):
+    def __init__(self,prevState=None):
+        self.prevState=prevState
         self._whoami=" ETAT A : "
     def step(self,parsing,requete):
         my_file = open("./DATA/Verbes.dat","r")                    #le fichier contenant les verbes            
@@ -29,10 +30,10 @@ class StateA(state.State):
                 
                 my_file.close()                                     #fermer le fichier
                 del parsing[0]                                      #supprimer le mot traité
-                return StateB.StateB()                                     #ALLER à L'ETAT B
+                return StateB.StateB(self)                                     #ALLER à L'ETAT B
         
         
-        print("Votre question n'est pas bien formulée.")
+        print("Je ne connais pas le mot",parsing[0],"est-ce bien un verbe ?")
         print("Je ne parviens pas à traiter votre demande")
         my_file.close()                                             #fermer le fichier
         return                                                      #sortir

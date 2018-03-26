@@ -10,7 +10,8 @@ class StateInit(state.State):
     Première lecture de la question.
     Renseignement de la partie : SELECT
     """
-    def __init__(self):
+    def __init__(self,prevState=None):
+        self.prevState=prevState
         self._whoami=" ETAT 1 : question initiale"
     def step(self,parsing,requete):
         my_file = open("./DATA/Interrogatifs.dat","r")
@@ -20,8 +21,8 @@ class StateInit(state.State):
             if(parsing[0]==interrogatif):
                 del parsing[0]
                 my_file.close()
-                return State2.State2()
+                return State2.State2(self)
             
         my_file.close()
-        return State3.State3()
+        return State3.State3(self)
         pass

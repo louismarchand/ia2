@@ -9,7 +9,8 @@ class State2(state.State):
     Lecture du verbe de la question.
     Permet éventuellement de renseigner la partie : FROM selon le verbe rencontré.
     """
-    def __init__(self):
+    def __init__(self,prevState=None):
+        self.prevState=prevState
         self._whoami=" ETAT 2 : Pronom interrogatif lu"
     def step(self,parsing,requete):
         my_file = open("./DATA/Verbes.dat","r")                    #le fichier contenant les verbes
@@ -29,7 +30,7 @@ class State2(state.State):
                 del parsing[0]                                      #suppression de l'élément traité
                 my_file.close()                                     #fermeture du fichier
                 
-                return State3.State3()                                     #PASSER à L'ETAT 3
+                return State3.State3(self)                                     #PASSER à L'ETAT 3
                 
         print("Votre question n'est pas bien formulée.")
         print("Je ne parviens pas à traiter votre demande")
