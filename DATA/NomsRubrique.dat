@@ -1,0 +1,12 @@
+étudiants:prenom,nom;table1
+etudiants:prenom,nom;table1
+etudiant:prenom,nom;table1
+étudiant:prenom,nom;table1
+personnes:prenom,nom;table1
+personne:prenom,nom;table1
+diplôme:diplome;table1
+diplome:diplome;table1
+responsable:responsable;table2
+responsables:responsable;table2
+date_naissance:ddn;table1
+naissance:ddn;table1
