@@ -82,6 +82,10 @@ def launchAutomate3000(verbose,cursor):
                 print("    La requete construite est la suivante : ")
                 print("   "+automate._requete["finale"])
                 print("")
+            else:
+                print("    La requete construite est la suivante : ")
+                print("   "+automate._requete["finale"])
+                print("")
             
             
             cursor.execute(automate._requete["finale"])                 #execution de la requete formée
