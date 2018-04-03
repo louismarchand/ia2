@@ -109,10 +109,10 @@ def launchTests(verbose,cursor):
         "naissance des etudiants qui preparent le diplome m1informatique ?",
         "qui est le responsable du diplome m1informatique ?",
         "quelles sont les personnes qui habitent à paris ?",
+        "qui prépare le diplome m1informatique ?",                      #ne fonctionne pas correctement
         "quelles sont les personnes qui habitent à angers et qui préparent le diplome m1informatique ?",
-        "quels sont les etudiants qui preparent le diplome m2pro ?",
-        "qui prépare le diplome m1informatique ?",                          #ne fonctionne pas correctement
-        "ou habite les etudiants qui preparent le diplome m2pro ?"          #ne fonctionne pas
+        "quels sont les etudiants qui preparent le diplome m2pro ?"
+        
     )
     
     taille = len(question)                                              #le nombre de question
@@ -138,7 +138,7 @@ def launchTests(verbose,cursor):
     except:
         print("","Une erreur est survenu ","oups !","",sep="\n")
     finally:
-        res = bueno/taille
+        res = (bueno/taille)*100
         gauche = (""+str(res)).split(".")[0]
         droite = (""+str(res)).split(".")[1]
         res = gauche+"."+droite[:2]
